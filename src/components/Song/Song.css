@@ -1,0 +1,130 @@
+.song {
+  display: grid;
+  grid-template-columns: 36px 1fr 190px 110px 54px auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  cursor: default;
+}
+
+.song:hover {
+  background: #22222c;
+}
+
+.song--in-library {
+  background: rgba(200, 240, 74, 0.04);
+  border-color: rgba(200, 240, 74, 0.1);
+}
+
+.song__number {
+  text-align: center;
+  font-size: 13px;
+  color: #55556a;
+  font-variant-numeric: tabular-nums;
+}
+
+.song__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.song__title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f0f0f5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.song--in-library .song__title {
+  color: #c8f04a;
+}
+
+.song__artist {
+  font-size: 12px;
+  color: #8888a0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.song__album {
+  font-size: 12px;
+  color: #8888a0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.song__genre {
+  font-size: 11px;
+  color: #55556a;
+  background: #18181f;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.song__duration {
+  font-size: 12px;
+  color: #8888a0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.song__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.song__btn {
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 5px 12px;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.song__btn--add {
+  background: rgba(200, 240, 74, 0.12);
+  color: #c8f04a;
+  border: 1px solid rgba(200, 240, 74, 0.25);
+}
+
+.song__btn--add:hover:not(:disabled) {
+  background: #c8f04a;
+  color: #0a0a0f;
+  transform: scale(1.04);
+}
+
+.song__btn--added {
+  background: rgba(200, 240, 74, 0.06);
+  color: #6a8030;
+  border-color: rgba(200, 240, 74, 0.12);
+  cursor: default;
+}
+
+.song__btn--remove {
+  background: rgba(240, 74, 122, 0.1);
+  color: #f04a7a;
+  border: 1px solid rgba(240, 74, 122, 0.2);
+}
+
+.song__btn--remove:hover {
+  background: #f04a7a;
+  color: #fff;
+  transform: scale(1.04);
+}
