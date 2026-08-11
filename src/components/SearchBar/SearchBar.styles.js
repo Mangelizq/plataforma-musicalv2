@@ -25,13 +25,14 @@ export const SearchInput = styled.input`
   padding: 12px 14px;
   border: 1px solid #30303d;
   border-radius: ${({ theme }) => theme.radii.medium};
-  outline: none;
   background: ${({ theme }) => theme.colors.surfaceAlt};
   color: ${({ theme }) => theme.colors.text};
 
-  &:focus {
+  &:focus-visible {
     border-color: ${({ theme }) => theme.colors.primary};
     box-shadow: 0 0 0 3px rgba(200, 240, 74, 0.1);
+    outline: 3px solid ${({ theme }) => theme.colors.primary};
+    outline-offset: 2px;
   }
 `;
 export const SearchButton = styled.button`

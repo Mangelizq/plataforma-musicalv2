@@ -31,12 +31,25 @@ function SongDetail() {
 
   return (
     <DetailPage>
-      <BackLink to="/">← Volver a la búsqueda</BackLink>
-      {loading && <DetailStatus $type="loading">Cargando...</DetailStatus>}
+      <BackLink to="/" aria-label="Volver a la página principal">
+        ← Volver a la búsqueda
+      </BackLink>
+      {loading && (
+        <DetailStatus $type="loading" role="status" aria-live="polite">
+          Cargando...
+        </DetailStatus>
+      )}
       {!loading && error && (
         <DetailStatus $type="error" role="alert">
           <p>Hubo un problema al cargar los datos. Intenta nuevamente.</p>
-          <DetailRetryButton $variant="danger" type="button" onClick={refetch}>Reintentar</DetailRetryButton>
+          <DetailRetryButton
+            $variant="danger"
+            type="button"
+            onClick={refetch}
+            aria-label="Reintentar carga del álbum"
+          >
+            Reintentar
+          </DetailRetryButton>
         </DetailStatus>
       )}
       {!loading && !error && data && !album && (
@@ -48,7 +61,7 @@ function SongDetail() {
             {album.strAlbumThumb ? (
               <CoverImage
                 src={album.strAlbumThumbHQ || album.strAlbumThumb}
-                alt={`Portada de ${album.strAlbum}`}
+                alt={`Portada del álbum ${album.strAlbum} de ${album.strArtist}`}
               />
             ) : (
               <CoverPlaceholder aria-hidden="true">♪</CoverPlaceholder>

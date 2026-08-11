@@ -17,12 +17,12 @@ import {
 
 function Library({ canciones, onRemove }) {
   return (
-    <LibraryContainer>
+    <LibraryContainer aria-labelledby="library-title">
       <LibraryHeader>
         <TitleRow>
-          <Icon>🎵</Icon>
+          <Icon aria-hidden="true">🎵</Icon>
           <div>
-            <Title>Mi Biblioteca</Title>
+            <Title id="library-title">Mi Biblioteca</Title>
             <Subtitle>
               {canciones.length === 0
                 ? 'Aún no tienes canciones guardadas'
@@ -34,14 +34,14 @@ function Library({ canciones, onRemove }) {
 
       {canciones.length === 0 ? (
         <Empty>
-          <EmptyIcon>🎧</EmptyIcon>
+          <EmptyIcon aria-hidden="true">🎧</EmptyIcon>
           <EmptyText>
             Agrega canciones desde los resultados de búsqueda para verlas aquí.
           </EmptyText>
         </Empty>
       ) : (
         <>
-          <ListHeader>
+          <ListHeader aria-hidden="true">
             <HeaderCell $align="center">#</HeaderCell>
             <HeaderCell>Título</HeaderCell>
             <HeaderCell $hideTablet>Álbum</HeaderCell>

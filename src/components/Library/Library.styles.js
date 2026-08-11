@@ -19,4 +19,4 @@ export const HeaderCell = styled.span`
   text-transform: uppercase;
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) { display: ${({ $hideTablet }) => $hideTablet ? 'none' : 'block'}; }
 `;
-export const List = styled.div`display: flex; flex-direction: column; gap: 2px;`;
+export const List = styled.ol`display: flex; flex-direction: column; gap: 2px; list-style: none;`;

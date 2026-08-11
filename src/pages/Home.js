@@ -22,11 +22,22 @@ function Home({ biblioteca, onAdd, onRemove }) {
     <Main>
       <SearchBar onSearch={setSearchTerm} />
       {!searchTerm && <StatusMessage $type="empty">Busca un artista para ver sus álbumes.</StatusMessage>}
-      {searchTerm && loading && <StatusMessage $type="loading">Cargando...</StatusMessage>}
+      {searchTerm && loading && (
+        <StatusMessage $type="loading" role="status" aria-live="polite">
+          Cargando...
+        </StatusMessage>
+      )}
       {searchTerm && !loading && error && (
         <StatusMessage $type="error" role="alert">
           <p>Hubo un problema al cargar los datos. Intenta nuevamente.</p>
-          <RetryButton $variant="danger" type="button" onClick={refetch}>Reintentar</RetryButton>
+          <RetryButton
+            $variant="danger"
+            type="button"
+            onClick={refetch}
+            aria-label="Reintentar búsqueda de álbumes"
+          >
+            Reintentar
+          </RetryButton>
         </StatusMessage>
       )}
       {searchTerm && !loading && !error && data && albums.length === 0 && (

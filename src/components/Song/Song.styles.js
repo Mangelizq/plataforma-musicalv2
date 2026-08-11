@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SongTitle = styled.span`overflow: hidden; color: ${({ theme }) => theme.colors.text}; font-size: 14px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap;`;
-export const SongRow = styled.div`
+export const SongRow = styled.li`
   display: grid;
   grid-template-columns: 36px 1fr 190px 110px 54px auto;
   gap: 10px;

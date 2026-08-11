@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
   position: sticky;
@@ -52,17 +53,18 @@ export const Nav = styled.nav`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) { display: none; }
 `;
-export const NavItem = styled.span`
+export const NavItem = styled(Link)`
   padding: 7px ${({ theme }) => theme.spacing.md};
   border-radius: ${({ theme }) => theme.radii.small};
-  background: ${({ $active, theme }) => $active ? theme.colors.primary : 'transparent'};
-  color: ${({ $active, theme }) => $active ? theme.colors.background : theme.colors.textSecondary};
+  background: ${({ 'aria-current': current, theme }) => current ? theme.colors.primary : 'transparent'};
+  color: ${({ 'aria-current': current, theme }) => current ? theme.colors.background : theme.colors.textSecondary};
   font-size: 13px;
-  font-weight: ${({ $active }) => $active ? 600 : 500};
+  font-weight: ${({ 'aria-current': current }) => current ? 600 : 500};
+  text-decoration: none;
   transition: all 0.2s ease;
 
   &:hover {
-    background: ${({ $active, theme }) => $active ? theme.colors.primary : theme.colors.surfaceHover};
-    color: ${({ $active, theme }) => $active ? theme.colors.background : theme.colors.text};
+    background: ${({ 'aria-current': current, theme }) => current ? theme.colors.primary : theme.colors.surfaceHover};
+    color: ${({ 'aria-current': current, theme }) => current ? theme.colors.background : theme.colors.text};
   }
 `;

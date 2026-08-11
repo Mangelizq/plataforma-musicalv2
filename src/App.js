@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './pages/Home';
 import SongDetail from './pages/SongDetail';
-import { AppContainer } from './App.styles';
+import { AppContainer, Footer } from './App.styles';
 
 function App() {
   const [biblioteca, setBiblioteca] = useState([]);
@@ -60,6 +60,9 @@ function App() {
         />
         <Route path="/song/:id" element={<SongDetail />} />
       </Routes>
+      <Footer>
+        <p>Biblioteca Musical — Proyecto académico</p>
+      </Footer>
     </AppContainer>
   );
 }

@@ -22,12 +22,12 @@ import {
 
 function SearchResults({ albums, biblioteca, onAdd }) {
   return (
-    <ResultsContainer>
+    <ResultsContainer aria-labelledby="results-title">
       <ResultsHeader>
         <TitleRow>
-          <Icon>🔍</Icon>
+          <Icon aria-hidden="true">🔍</Icon>
           <div>
-            <ResultsTitle>Resultados de búsqueda</ResultsTitle>
+            <ResultsTitle id="results-title">Resultados de búsqueda</ResultsTitle>
             <ResultsSubtitle>
               {albums.length} álbum{albums.length !== 1 ? 'es' : ''} encontrado{albums.length !== 1 ? 's' : ''}
             </ResultsSubtitle>
@@ -40,7 +40,11 @@ function SearchResults({ albums, biblioteca, onAdd }) {
           return (
             <AlbumCard $saved={isInLibrary} key={album.idAlbum}>
               {album.strAlbumThumb ? (
-                <AlbumCover src={album.strAlbumThumb} alt={`Portada de ${album.strAlbum}`} loading="lazy" />
+                <AlbumCover
+                  src={album.strAlbumThumb}
+                  alt={`Portada del álbum ${album.strAlbum} de ${album.strArtist}`}
+                  loading="lazy"
+                />
               ) : (
                 <CoverPlaceholder aria-hidden="true">♪</CoverPlaceholder>
               )}
@@ -50,7 +54,12 @@ function SearchResults({ albums, biblioteca, onAdd }) {
                 <ArtistName>{album.strArtist}</ArtistName>
                 <AlbumYear>{album.intYearReleased || 'Año no disponible'}</AlbumYear>
                 <CardActions>
-                  <DetailsLink to={`/song/${album.idAlbum}`}>Ver detalles</DetailsLink>
+                  <DetailsLink
+                    to={`/song/${album.idAlbum}`}
+                    aria-label={`Ver detalles del álbum ${album.strAlbum}`}
+                  >
+                    Ver detalles
+                  </DetailsLink>
                   <SaveButton
                     $saved={isInLibrary}
                     type="button"

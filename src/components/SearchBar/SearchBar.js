@@ -17,7 +17,7 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <SearchForm onSubmit={handleSubmit} role="search">
+    <SearchForm onSubmit={handleSubmit} role="search" aria-label="Buscar álbumes">
       <SearchLabel htmlFor="artist-search">
         Buscar álbumes por artista
       </SearchLabel>
