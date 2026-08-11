@@ -31,7 +31,7 @@ function Header() {
             Inicio
           </NavItem>
         </Nav>
-      </HeaderInner>
+      </HeaderInner> 
     </HeaderContainer>
   );
 }
