@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './pages/Home';
 import SongDetail from './pages/SongDetail';
-import './App.css';
+import { AppContainer } from './App.styles';
 
 function App() {
   const [biblioteca, setBiblioteca] = useState([]);
@@ -45,7 +45,7 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <AppContainer>
       <Header />
       <Routes>
         <Route
@@ -60,7 +60,7 @@ function App() {
         />
         <Route path="/song/:id" element={<SongDetail />} />
       </Routes>
-    </div>
+    </AppContainer>
   );
 }
 

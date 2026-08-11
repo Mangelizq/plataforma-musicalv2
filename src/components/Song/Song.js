@@ -1,5 +1,16 @@
 import React from "react";
-import "./Song.css";
+import {
+  ActionButton,
+  Actions,
+  SongAlbum,
+  SongArtist,
+  SongDuration,
+  SongGenre,
+  SongInfo,
+  SongNumber,
+  SongRow,
+  SongTitle,
+} from "./Song.styles";
 
 function Song({
   numero,
@@ -13,24 +24,24 @@ function Song({
   isInLibrary,
 }) {
   return (
-    <div className={`song ${isInLibrary ? "song--in-library" : ""}`}>
-      <span className="song__number">{numero}</span>
+    <SongRow $inLibrary={isInLibrary}>
+      <SongNumber>{numero}</SongNumber>
 
-      <div className="song__info">
-        <span className="song__title">{titulo}</span>
-        <span className="song__artist">{artista}</span>
-      </div>
+      <SongInfo>
+        <SongTitle>{titulo}</SongTitle>
+        <SongArtist>{artista}</SongArtist>
+      </SongInfo>
 
-      <span className="song__album">{album}</span>
+      <SongAlbum>{album}</SongAlbum>
 
-      <span className="song__genre">{genero}</span>
+      <SongGenre>{genero}</SongGenre>
 
-      <span className="song__duration">{duracion}</span>
+      <SongDuration>{duracion}</SongDuration>
 
-      <div className="song__actions">
+      <Actions>
         {onAdd && (
-          <button
-            className={`song__btn song__btn--add ${isInLibrary ? "song__btn--added" : ""}`}
+          <ActionButton
+            $saved={isInLibrary}
             onClick={() =>
               onAdd({ numero, titulo, artista, album, duracion, genero })
             }
@@ -42,19 +53,19 @@ function Song({
             }
           >
             {isInLibrary ? "✓ Agregada" : "+ Agregar a mi biblioteca"}
-          </button>
+          </ActionButton>
         )}
         {onRemove && (
-          <button
-            className="song__btn song__btn--remove"
+          <ActionButton
+            $variant="remove"
             onClick={() => onRemove(numero)}
             title="Quitar de la biblioteca"
           >
             ✕ Quitar
-          </button>
+          </ActionButton>
         )}
-      </div>
-    </div>
+      </Actions>
+    </SongRow>
   );
 }
 

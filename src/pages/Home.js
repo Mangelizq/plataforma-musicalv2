@@ -3,6 +3,7 @@ import Library from '../components/Library/Library';
 import SearchBar from '../components/SearchBar/SearchBar';
 import SearchResults from '../components/SearchResults/Searchresults';
 import useFetch from '../hooks/useFetch';
+import { Main, RetryButton, StatusMessage } from './Home.styles';
 
 const API_BASE = 'https://www.theaudiodb.com/api/v1/json/2';
 
@@ -18,24 +19,24 @@ function Home({ biblioteca, onAdd, onRemove }) {
   );
 
   return (
-    <main className="app__main">
+    <Main>
       <SearchBar onSearch={setSearchTerm} />
-      {!searchTerm && <div className="status">Busca un artista para ver sus álbumes.</div>}
-      {searchTerm && loading && <div className="status">Cargando...</div>}
+      {!searchTerm && <StatusMessage $type="empty">Busca un artista para ver sus álbumes.</StatusMessage>}
+      {searchTerm && loading && <StatusMessage $type="loading">Cargando...</StatusMessage>}
       {searchTerm && !loading && error && (
-        <div className="status status--error" role="alert">
+        <StatusMessage $type="error" role="alert">
           <p>Hubo un problema al cargar los datos. Intenta nuevamente.</p>
-          <button className="status__button" type="button" onClick={refetch}>Reintentar</button>
-        </div>
+          <RetryButton $variant="danger" type="button" onClick={refetch}>Reintentar</RetryButton>
+        </StatusMessage>
       )}
       {searchTerm && !loading && !error && data && albums.length === 0 && (
-        <div className="status">No se encontraron resultados.</div>
+        <StatusMessage $type="empty">No se encontraron resultados.</StatusMessage>
       )}
       {!loading && !error && albums.length > 0 && (
         <SearchResults albums={albums} biblioteca={biblioteca} onAdd={onAdd} />
       )}
       <Library canciones={biblioteca} onRemove={onRemove} />
-    </main>
+    </Main>
   );
 }
 

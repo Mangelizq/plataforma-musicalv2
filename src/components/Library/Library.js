@@ -1,43 +1,56 @@
 import React from 'react';
 import Song from '../Song/Song';
-import './Library.css';
+import {
+  Empty,
+  EmptyIcon,
+  EmptyText,
+  HeaderCell,
+  Icon,
+  LibraryContainer,
+  LibraryHeader,
+  List,
+  ListHeader,
+  Subtitle,
+  Title,
+  TitleRow,
+} from './Library.styles';
 
 function Library({ canciones, onRemove }) {
   return (
-    <section className="library">
-      <div className="library__header">
-        <div className="library__title-row">
-          <span className="library__icon">🎵</span>
+    <LibraryContainer>
+      <LibraryHeader>
+        <TitleRow>
+          <Icon>🎵</Icon>
           <div>
-            <h2 className="library__title">Mi Biblioteca</h2>
-            <p className="library__subtitle">
+            <Title>Mi Biblioteca</Title>
+            <Subtitle>
               {canciones.length === 0
                 ? 'Aún no tienes canciones guardadas'
                 : `${canciones.length} canción${canciones.length !== 1 ? 'es' : ''} en tu biblioteca`}
-            </p>
+            </Subtitle>
           </div>
-        </div>
-      </div>
+        </TitleRow>
+      </LibraryHeader>
 
       {canciones.length === 0 ? (
-        <div className="library__empty">
-          <span className="library__empty-icon">🎧</span>
-          <p className="library__empty-text">
+        <Empty>
+          <EmptyIcon>🎧</EmptyIcon>
+          <EmptyText>
             Agrega canciones desde los resultados de búsqueda para verlas aquí.
-          </p>
-        </div>
+          </EmptyText>
+        </Empty>
       ) : (
         <>
-          <div className="library__list-header">
-            <span className="col-num">#</span>
-            <span>Título</span>
-            <span>Álbum</span>
-            <span>Género</span>
-            <span className="col-right">⏱</span>
-            <span></span>
-          </div>
+          <ListHeader>
+            <HeaderCell $align="center">#</HeaderCell>
+            <HeaderCell>Título</HeaderCell>
+            <HeaderCell $hideTablet>Álbum</HeaderCell>
+            <HeaderCell $hideTablet>Género</HeaderCell>
+            <HeaderCell $align="right" $hideTablet>⏱</HeaderCell>
+            <HeaderCell aria-hidden="true" />
+          </ListHeader>
 
-          <div className="library__list">
+          <List>
             {canciones.map((cancion, index) => (
               <Song
                 key={cancion.id}
@@ -50,10 +63,10 @@ function Library({ canciones, onRemove }) {
                 onRemove={() => onRemove(cancion.id)}
               />
             ))}
-          </div>
+          </List>
         </>
       )}
-    </section>
+    </LibraryContainer>
   );
 }
 
