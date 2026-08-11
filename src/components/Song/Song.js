@@ -1,9 +1,19 @@
-import React from 'react';
-import './Song.css';
+import React from "react";
+import "./Song.css";
 
-function Song({ numero, titulo, artista, album, duracion, genero, onAdd, onRemove, isInLibrary }) {
+function Song({
+  numero,
+  titulo,
+  artista,
+  album,
+  duracion,
+  genero,
+  onAdd,
+  onRemove,
+  isInLibrary,
+}) {
   return (
-    <div className={`song ${isInLibrary ? 'song--in-library' : ''}`}>
+    <div className={`song ${isInLibrary ? "song--in-library" : ""}`}>
       <span className="song__number">{numero}</span>
 
       <div className="song__info">
@@ -20,12 +30,18 @@ function Song({ numero, titulo, artista, album, duracion, genero, onAdd, onRemov
       <div className="song__actions">
         {onAdd && (
           <button
-            className={`song__btn song__btn--add ${isInLibrary ? 'song__btn--added' : ''}`}
-            onClick={() => onAdd({ numero, titulo, artista, album, duracion, genero })}
+            className={`song__btn song__btn--add ${isInLibrary ? "song__btn--added" : ""}`}
+            onClick={() =>
+              onAdd({ numero, titulo, artista, album, duracion, genero })
+            }
             disabled={isInLibrary}
-            title={isInLibrary ? 'Ya está en tu biblioteca' : 'Agregar a mi biblioteca'}
+            title={
+              isInLibrary
+                ? "Ya está en tu biblioteca"
+                : "Agregar a mi biblioteca"
+            }
           >
-            {isInLibrary ? '✓ Agregada' : '+ Agregar a mi biblioteca'}
+            {isInLibrary ? "✓ Agregada" : "+ Agregar a mi biblioteca"}
           </button>
         )}
         {onRemove && (

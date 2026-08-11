@@ -1,0 +1,28 @@
+.detail-page__back { align-self: flex-start; color: #c8f04a; font-size: 14px; text-decoration: none; }
+
+.album-detail {
+  display: grid;
+  grid-template-columns: minmax(240px, 360px) 1fr;
+  gap: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  background: #111118;
+  padding: 28px;
+}
+
+.album-detail__cover,
+.album-detail__placeholder { width: 100%; aspect-ratio: 1; border-radius: 12px; object-fit: cover; }
+.album-detail__placeholder { display: grid; place-items: center; background: #22222c; color: #55556a; font-size: 72px; }
+.album-detail__eyebrow { color: #c8f04a; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.album-detail h2 { margin: 8px 0 4px; color: #f0f0f5; font-family: 'Syne', sans-serif; font-size: clamp(28px, 5vw, 44px); }
+.album-detail__artist { color: #8888a0; font-size: 18px; }
+.album-detail__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 28px 0; }
+.album-detail__facts div { border-left: 2px solid #c8f04a; padding-left: 10px; }
+.album-detail__facts dt { color: #55556a; font-size: 11px; text-transform: uppercase; }
+.album-detail__facts dd { margin: 3px 0 0; color: #f0f0f5; font-size: 14px; }
+.album-detail__description { color: #aaaabc; font-size: 14px; line-height: 1.7; white-space: pre-line; }
+
+@media (max-width: 720px) {
+  .album-detail { grid-template-columns: 1fr; gap: 24px; padding: 20px; }
+  .album-detail__cover-wrap { max-width: 360px; margin: 0 auto; }
+}

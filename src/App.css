@@ -31,6 +31,24 @@ body {
   gap: 28px;
 }
 
+.status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: #111118;
+  color: #8888a0;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.status--error {
+  border-color: rgba(240, 74, 122, 0.25);
+  color: #f0a0b8;
+}
+
 @media (max-width: 768px) {
   .app__main {
     padding: 20px 16px 60px;
